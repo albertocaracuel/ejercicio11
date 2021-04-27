@@ -7,26 +7,9 @@ package com.mycompany.filesej11albertocaracuel;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.DoubleSummaryStatistics;
 import java.util.Objects;
-import java.util.OptionalDouble;
-import java.util.PrimitiveIterator;
 import java.util.Random;
-import java.util.Spliterator;
-import java.util.function.BiConsumer;
-import java.util.function.DoubleBinaryOperator;
-import java.util.function.DoubleConsumer;
-import java.util.function.DoubleFunction;
-import java.util.function.DoublePredicate;
-import java.util.function.DoubleToIntFunction;
-import java.util.function.DoubleToLongFunction;
-import java.util.function.DoubleUnaryOperator;
-import java.util.function.ObjDoubleConsumer;
-import java.util.function.Supplier;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-import java.util.stream.Stream;
+
 
 /**
  *
@@ -46,13 +29,16 @@ public class App {
         this.codigoUnico = contadorInstancias();
         this.nombre = crearNombre();
         this.direccion = crearDireccion();
-        this.tamaño = tamaño;
-        this.fechaDeCreacion = fechaDeCreacion;
+        this.tamaño = crearTamaño();
+        this.fechaDeCreacion = LocalDate.now();
+        
+        contador++;
     }
     
     private double crearTamaño(){
-        DoubleStream uno =new DoubleStream();
-        uno.d
+    
+        
+        return random.doubles(1, 100.0, 1024.0).sum();
     }
     private String crearDireccion() {
         ArrayList<String> lista = new ArrayList<>();
@@ -116,8 +102,8 @@ public class App {
         return tamaño;
     }
 
-    public void setTamaño(double tamaño) {
-        this.tamaño = tamaño;
+    public void setTamaño() {
+        this.tamaño = crearTamaño();
     }
 
     public LocalDate getFechaDeCreacion() {
@@ -171,7 +157,7 @@ public class App {
 
     @Override
     public String toString() {
-        return codigoUnico + " " + nombre + "  " + direccion + "   " + tamaño + "  " + fechaDeCreacion;
+        return "{" + codigoUnico + " " + nombre + "  " + direccion + "   " + tamaño + "  " + fechaDeCreacion + "}";
     }
 
 }
