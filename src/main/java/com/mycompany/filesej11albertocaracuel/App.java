@@ -28,19 +28,20 @@ public class App {
     public App() {
         this.codigoUnico = contadorInstancias();
         this.nombre = crearNombre();
-        this.direccion = crearDireccion();
+        this.direccion = crearDescripcion();
         this.tamaño = crearTamaño();
         this.fechaDeCreacion = LocalDate.now();
         
         contador++;
     }
-    
+    //hago un random double para hacer el tamaño
     private double crearTamaño(){
     
         
         return random.doubles(1, 100.0, 1024.0).sum();
     }
-    private String crearDireccion() {
+    //hago una lista de 10 descripciones,un aleatorio de 0 a 9 que me darta una posicion de la lista
+    private String crearDescripcion() {
         ArrayList<String> lista = new ArrayList<>();
 
         lista.add("sirve para hacer fotos");
@@ -57,9 +58,9 @@ public class App {
         int a = random.nextInt(9 - 0 + 1) + 0;
         return lista.get(a);
     }
-
+    //sumo los string q contiene app la letra aleatoria y el contador
     private String crearNombre() {
-        Random random = new Random();
+        
 
         String numCadena = String.valueOf(contadorInstancias());
 
@@ -69,7 +70,7 @@ public class App {
 
         return nombreFinal;
     }
-
+    //creo variable q se va sumando con cada constructor y te lo devuelve
     private int contadorInstancias() {
         return contador;
     }
@@ -95,7 +96,7 @@ public class App {
     }
 
     public void setDireccion() {
-        this.direccion = crearDireccion();
+        this.direccion = crearDescripcion();
     }
 
     public double getTamaño() {

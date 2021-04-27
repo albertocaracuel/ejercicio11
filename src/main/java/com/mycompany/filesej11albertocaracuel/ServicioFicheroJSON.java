@@ -19,20 +19,15 @@ public class ServicioFicheroJSON {
 
     public ServicioFicheroJSON() {
     }
-
-    
-   
-
-    public  void escribirArchivo(String nombre,ArrayList<App> lista) throws IOException {
-
-       
+//metodo que crea el json
+    public void escribirArchivo(String nombre, ArrayList<App> lista) throws IOException {
 
         ObjectMapper mapeador = new ObjectMapper();
 
         mapeador.configure(SerializationFeature.INDENT_OUTPUT, true);
 
         // Escribe en un fichero JSON el catálogo de muebles
-        mapeador.writeValue(new File( nombre), lista);
+        mapeador.writeValue(new File(nombre), lista);
 
     }
 }

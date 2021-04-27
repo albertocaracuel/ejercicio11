@@ -52,7 +52,8 @@ public class Programa {
         }
 
     }
-
+    //metodo que crea un objeto,mediante una lista y for al q le doy el numero de objetos que quiera
+    //y se lo voy añadiendo mientras la recorro
     private static ArrayList<App> crearLista(int numeroDeObjetos) {
         ArrayList<App> lista = new ArrayList<>();
         for (int i = 0; i < numeroDeObjetos; i++) {
@@ -62,7 +63,7 @@ public class Programa {
 
         return lista;
     }
-
+    //metodo que crea un directorio
     private static void crearDirectorio(String directorio) {
         Path directory = Paths.get(directorio);
         try {
