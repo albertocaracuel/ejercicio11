@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -22,6 +22,7 @@ public class App {
     private String nombre;
     private String direccion;
     private double tamaño;
+     @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     private LocalDate fechaDeCreacion;
     private static int contador;
 
@@ -30,16 +31,37 @@ public class App {
         this.nombre = crearNombre();
         this.direccion = crearDescripcion();
         this.tamaño = crearTamaño();
-        this.fechaDeCreacion = LocalDate.now();
-        
+        this.fechaDeCreacion = crearFecha();
+
         contador++;
     }
+
+    private LocalDate crearFecha() {
+        LocalDate fecha =  LocalDate.now();
+
+        int a = random.nextInt(2 - 1 + 1) + 1;
+
+        switch(a){
+            case 1:
+                int b = random.nextInt(30 - 1 + 1) + 1;
+                fecha.plusDays(contador);
+                break;
+                
+            case 2:
+                int c = random.nextInt(30 - 1 + 1) + 1;
+                fecha.minusDays(codigoUnico);
+                break;
+        }
+
+        return fecha;
+    }
+
     //hago un random double para hacer el tamaño
-    private double crearTamaño(){
-    
-        
+    private double crearTamaño() {
+
         return random.doubles(1, 100.0, 1024.0).sum();
     }
+
     //hago una lista de 10 descripciones,un aleatorio de 0 a 9 que me darta una posicion de la lista
     private String crearDescripcion() {
         ArrayList<String> lista = new ArrayList<>();
@@ -58,9 +80,9 @@ public class App {
         int a = random.nextInt(9 - 0 + 1) + 0;
         return lista.get(a);
     }
+
     //sumo los string q contiene app la letra aleatoria y el contador
     private String crearNombre() {
-        
 
         String numCadena = String.valueOf(contadorInstancias());
 
@@ -70,6 +92,7 @@ public class App {
 
         return nombreFinal;
     }
+
     //creo variable q se va sumando con cada constructor y te lo devuelve
     private int contadorInstancias() {
         return contador;
@@ -111,8 +134,8 @@ public class App {
         return fechaDeCreacion;
     }
 
-    public void setFechaDeCreacion(LocalDate fechaDeCreacion) {
-        this.fechaDeCreacion = fechaDeCreacion;
+    public void setFechaDeCreacion() {
+        this.fechaDeCreacion = crearFecha();
     }
 
     @Override

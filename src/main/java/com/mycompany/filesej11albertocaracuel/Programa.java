@@ -33,8 +33,8 @@ public class Programa {
 
         o.escribirArchivoTSV( "./appstsv/Aplicaciones.tsv",crearLista(50));
 
-//        ServicioFicheroXML a = new ServicioFicheroXML();
-//        a.crearFicheroXML("./appsxml/Aplicaciones.xml", crearLista(50));
+        ServicioFicheroXML a = new ServicioFicheroXML();
+        a.crearFicheroXML("./appsxml/Aplicaciones.xml", crearLista(50));
         
         ServicioFicheroJSON e = new ServicioFicheroJSON();
 
